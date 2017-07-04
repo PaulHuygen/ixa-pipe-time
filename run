@@ -1,0 +1,7 @@
+#!/bin/bash
+thisdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+jarfile=ixa.pipe.time.jar
+cd $thisdir
+
+iconv -t utf-8//IGNORE | java -Xmx1000m -jar $jarfile -m lib/alpino-to-treetagger.csv -c lib/config.props
+
