@@ -1,7 +1,19 @@
 #!/bin/bash
-thisdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+modname=ixa-pipe-time
+#
+# Find the path to this module
+#
+if
+  [ -z ${MODROOT+x} ]
+then
+  # Find out path ourselves
+  thisdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+else
+  thisdir=$MODROOT/$modname
+fi
+thisscript=${thisdir}/run
 jarfile=ixa.pipe.time.jar
-cd $thisdir
 
+cd $thisdir
 iconv -t utf-8//IGNORE | java -Xmx1000m -jar $jarfile -m lib/alpino-to-treetagger.csv -c lib/config.props
 
